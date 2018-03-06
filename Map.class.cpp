@@ -34,16 +34,14 @@ void	Map::UpdateWaterLevel(int blockIndex)
 
 	std::vector<MapBlock*> localBlocks;
 
-	localBlocks.push_back(&_blocks[blockIndex]);
-	if (!OutOfBounds(x - 1, y))
-		localBlocks.push_back( &_blocks[y * size + (x - 1)] );
-	if (!OutOfBounds(x + 1, y))
-		localBlocks.push_back( &_blocks[y * size + (x + 1)] );
-	if (!OutOfBounds(x, y - 1))
-		localBlocks.push_back( &_blocks[(y - 1) * size + x] );
-	if (!OutOfBounds(x, y + 1))
-		localBlocks.push_back( &_blocks[(y + 1) * size + x] );
-
+	for (int xit = x - 1; xit <= x + 1; xit++)
+	{
+		for (int yit = y - 1; yit <= y + 1; yit++)
+		{
+			if (!OutOfBounds(xit, yit))
+				localBlocks.push_back( &_blocks[yit * size + xit] );
+		}				
+	}
 	DistributeWater(localBlocks, water);
 }
 

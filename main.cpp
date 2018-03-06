@@ -4,8 +4,16 @@
 int	main(int ac, char **av)
 {
 	if (ac != 2)
+	{
+		std::cout << "Run me with a file containing numbers" << std::endl;
 		return 1;
+	}
 
+	std::cout << "Controls are:" << std::endl
+		  << "1 - 6: different water effects" << std::endl
+		  << "w a s d z x: move camera" << std::endl
+		  << "j k n m: rotate camera" << std::endl;
+	
 	Window window(X_DIM, Y_DIM, "watersim");
 	Camera camera;
 	WaterSim simulator(av[1]);
@@ -15,8 +23,10 @@ int	main(int ac, char **av)
 	window.LeftAndRightKeys('A', 'D');
 	window.UpAndDownKeys('Z', 'X');
 
-	camera.TrackEvents(&window);	
-	camera.Move(glm::vec3(0, 0, 300));
+	camera.TrackEvents(&window);
+	camera.Rotate(glm::vec3(1, 0, 0), 90.0f);
+	camera.Move(glm::vec3(50, 100, 70));
+	camera.Rotate(glm::vec3(1, 0, 0), -40.0f);
 	camera.Rotate(glm::vec3(0, 1, 0), 180.0f);
 	
 

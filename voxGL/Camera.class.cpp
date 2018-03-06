@@ -15,7 +15,7 @@ glm::mat4	Camera::Perspective(void)
 {
 	glm::mat4 look = glm::lookAt(glm::vec3(_transform * glm::vec4(Pos, 1)),
 				     glm::vec3(_transform * glm::vec4(Forward, 1)),
-				     Up);
+				     glm::vec3(_transform * glm::vec4(Up, 0)));
 
 	float width, height;
 
