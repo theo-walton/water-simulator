@@ -5,9 +5,9 @@ SRC = *.cpp voxGL/*.cpp
 
 FRAMEWORKS = -framework OpenGl
 
-BREW_INC = -I /nfs/2017/t/twalton/.brew/include
+BREW_INC = -I ~/.brew/include
 
-GLFW_LINK = -L/nfs/2017/t/twalton/.brew/lib -lglfw
+GLFW_LINK = -L ~/.brew/lib -lglfw
 
 MY_INC = -I . -I ./voxGL
 

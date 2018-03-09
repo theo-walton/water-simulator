@@ -57,7 +57,8 @@ int	main(int ac, char **av)
 		}
 		else
 			h = 0;
-		simulator.WaterIteration();
+		if (!window.KeyOn('P'))
+			simulator.WaterIteration();
 		window.Update();		
 	}
 }
